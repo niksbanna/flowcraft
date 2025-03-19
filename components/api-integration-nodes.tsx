@@ -90,7 +90,7 @@ export default function ApiIntegrationNodes({ onNodeAdd }: ApiIntegrationNodesPr
                   placeholder="My API Integration"
                   value={nodeName}
                   onChange={(e) => setNodeName(e.target.value)}
-                  className="bg-gray-900 border-gray-800"
+                  className="bg-gray-900 border-gray-800 text-white"
                 />
               </div>
 
@@ -101,7 +101,7 @@ export default function ApiIntegrationNodes({ onNodeAdd }: ApiIntegrationNodesPr
                   <Input
                     id="rest-url"
                     placeholder="https://api.example.com/v1/resource"
-                    className="bg-gray-900 border-gray-800"
+                    className="bg-gray-900 border-gray-800 text-white"
                   />
                 </div>
 
@@ -111,7 +111,7 @@ export default function ApiIntegrationNodes({ onNodeAdd }: ApiIntegrationNodesPr
                     <SelectTrigger className="bg-gray-900 border-gray-800">
                       <SelectValue placeholder="Select method" />
                     </SelectTrigger>
-                    <SelectContent className="bg-gray-900 border-gray-800">
+                    <SelectContent className="bg-gray-900 border-gray-800 text-white">
                       <SelectItem value="get">GET</SelectItem>
                       <SelectItem value="post">POST</SelectItem>
                       <SelectItem value="put">PUT</SelectItem>
@@ -125,7 +125,7 @@ export default function ApiIntegrationNodes({ onNodeAdd }: ApiIntegrationNodesPr
                   <Textarea
                     id="rest-headers"
                     placeholder='{"Content-Type": "application/json", "Authorization": "Bearer ${token}"}'
-                    className="bg-gray-900 border-gray-800 font-mono text-sm min-h-[100px]"
+                    className="bg-gray-900 border-gray-800 text-white font-mono text-sm min-h-[100px]"
                   />
                 </div>
 
@@ -134,7 +134,7 @@ export default function ApiIntegrationNodes({ onNodeAdd }: ApiIntegrationNodesPr
                   <Textarea
                     id="rest-body"
                     placeholder='{"key": "value"}'
-                    className="bg-gray-900 border-gray-800 font-mono text-sm min-h-[100px]"
+                    className="bg-gray-900 border-gray-800 text-white font-mono text-sm min-h-[100px]"
                   />
                 </div>
 
@@ -160,7 +160,7 @@ export default function ApiIntegrationNodes({ onNodeAdd }: ApiIntegrationNodesPr
                   <Input
                     id="graphql-endpoint"
                     placeholder="https://api.example.com/graphql"
-                    className="bg-gray-900 border-gray-800"
+                    className="bg-gray-900 border-gray-800 text-white"
                   />
                 </div>
 
@@ -175,7 +175,7 @@ export default function ApiIntegrationNodes({ onNodeAdd }: ApiIntegrationNodesPr
     email
   }
 }`}
-                    className="bg-gray-900 border-gray-800 font-mono text-sm min-h-[150px]"
+                    className="bg-gray-900 border-gray-800 text-white font-mono text-sm min-h-[150px]"
                   />
                 </div>
 
@@ -184,7 +184,7 @@ export default function ApiIntegrationNodes({ onNodeAdd }: ApiIntegrationNodesPr
                   <Textarea
                     id="graphql-variables"
                     placeholder='{"id": "${userId}"}'
-                    className="bg-gray-900 border-gray-800 font-mono text-sm min-h-[100px]"
+                    className="bg-gray-900 border-gray-800 text-white font-mono text-sm min-h-[100px]"
                   />
                 </div>
 
@@ -211,7 +211,7 @@ export default function ApiIntegrationNodes({ onNodeAdd }: ApiIntegrationNodesPr
                     <SelectTrigger className="bg-gray-900 border-gray-800">
                       <SelectValue placeholder="Select database type" />
                     </SelectTrigger>
-                    <SelectContent className="bg-gray-900 border-gray-800">
+                    <SelectContent className="bg-gray-900 border-gray-800 text-white">
                       <SelectItem value="postgres">PostgreSQL</SelectItem>
                       <SelectItem value="mysql">MySQL</SelectItem>
                       <SelectItem value="mongodb">MongoDB</SelectItem>
@@ -225,7 +225,7 @@ export default function ApiIntegrationNodes({ onNodeAdd }: ApiIntegrationNodesPr
                   <Input
                     id="db-connection"
                     placeholder="postgresql://user:password@localhost:5432/dbname"
-                    className="bg-gray-900 border-gray-800"
+                    className="bg-gray-900 border-gray-800 text-white"
                   />
                 </div>
 
@@ -234,7 +234,7 @@ export default function ApiIntegrationNodes({ onNodeAdd }: ApiIntegrationNodesPr
                   <Textarea
                     id="db-query"
                     placeholder="SELECT * FROM users WHERE id = $1"
-                    className="bg-gray-900 border-gray-800 font-mono text-sm min-h-[100px]"
+                    className="bg-gray-900 border-gray-800 text-white font-mono text-sm min-h-[100px]"
                   />
                 </div>
 
@@ -243,7 +243,7 @@ export default function ApiIntegrationNodes({ onNodeAdd }: ApiIntegrationNodesPr
                   <Input
                     id="db-params"
                     placeholder='["param1", "param2"]'
-                    className="bg-gray-900 border-gray-800 font-mono"
+                    className="bg-gray-900 border-gray-800 text-white font-mono"
                   />
                 </div>
 

@@ -53,7 +53,7 @@ export default function WorkflowSettings({ workflowId }: { workflowId: string })
                     id="workflow-name"
                     value={workflowName}
                     onChange={(e) => setWorkflowName(e.target.value)}
-                    className="bg-gray-900 border-gray-800"
+                    className="bg-gray-900 border-gray-800 text-white"
                   />
                 </div>
 
@@ -63,7 +63,7 @@ export default function WorkflowSettings({ workflowId }: { workflowId: string })
                     id="workflow-description"
                     value={workflowDescription}
                     onChange={(e) => setWorkflowDescription(e.target.value)}
-                    className="bg-gray-900 border-gray-800 min-h-[100px]"
+                    className="bg-gray-900 border-gray-800 text-white min-h-[100px]"
                   />
                 </div>
 
@@ -104,7 +104,7 @@ export default function WorkflowSettings({ workflowId }: { workflowId: string })
                     type="number"
                     value={runTimeout}
                     onChange={(e) => setRunTimeout(e.target.value)}
-                    className="bg-gray-900 border-gray-800"
+                    className="bg-gray-900 border-gray-800 text-white"
                   />
                   <p className="text-sm text-muted-foreground">
                     Maximum time a workflow run can execute before timing out
@@ -118,7 +118,7 @@ export default function WorkflowSettings({ workflowId }: { workflowId: string })
                     type="number"
                     value={maxRetries}
                     onChange={(e) => setMaxRetries(e.target.value)}
-                    className="bg-gray-900 border-gray-800"
+                    className="bg-gray-900 border-gray-800 text-white"
                   />
                   <p className="text-sm text-muted-foreground">
                     Number of times to retry a failed node before giving up
@@ -175,7 +175,7 @@ export default function WorkflowSettings({ workflowId }: { workflowId: string })
                       id="api-key"
                       value="••••••••••••••••••••••••••••••"
                       readOnly
-                      className="bg-gray-900 border-gray-800 flex-1"
+                      className="bg-gray-900 border-gray-800 text-white flex-1"
                     />
                     <Button variant="outline">Regenerate</Button>
                   </div>
@@ -220,7 +220,7 @@ export default function WorkflowSettings({ workflowId }: { workflowId: string })
                   <Input
                     id="webhook-url"
                     placeholder="https://example.com/webhook"
-                    className="bg-gray-900 border-gray-800"
+                    className="bg-gray-900 border-gray-800 text-white"
                   />
                 </div>
 
@@ -229,7 +229,7 @@ export default function WorkflowSettings({ workflowId }: { workflowId: string })
                   <Textarea
                     id="environment-variables"
                     placeholder="KEY=value"
-                    className="bg-gray-900 border-gray-800 min-h-[100px] font-mono text-sm"
+                    className="bg-gray-900 border-gray-800 text-white font-mono text-sm min-h-[100px]"
                   />
                   <p className="text-sm text-muted-foreground">
                     Define environment variables for this workflow (one per line, KEY=value format)

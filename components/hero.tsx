@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button"
+import Link from "next/link"
 
 export default function Hero() {
   return (
@@ -14,12 +15,16 @@ export default function Hero() {
               <p className="text-xl text-muted-foreground">No coding required.</p>
             </div>
             <div className="flex flex-col gap-2 min-[400px]:flex-row">
-              <Button size="lg" className="px-8">
-                Get started (it's free)
-              </Button>
-              <Button size="lg" variant="outline">
-                Book demo
-              </Button>
+              <Link href="/workflow">
+                <Button size="lg" className="px-8">
+                  Create a workflow
+                </Button>
+              </Link>
+              <Link href="/workflow/large-scale">
+                <Button size="lg" variant="outline">
+                  See large-scale demo
+                </Button>
+              </Link>
             </div>
             <div className="pt-8">
               <h3 className="text-sm font-medium mb-2">Trusted by</h3>

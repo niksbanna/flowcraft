@@ -84,7 +84,7 @@ export default function TriggerSelector({ onTriggerAdd }: TriggerSelectorProps) 
                   placeholder="My Trigger"
                   value={triggerName}
                   onChange={(e) => setTriggerName(e.target.value)}
-                  className="bg-gray-900 border-gray-800"
+                  className="bg-gray-900 border-gray-800 text-white"
                 />
               </div>
 
@@ -105,7 +105,7 @@ export default function TriggerSelector({ onTriggerAdd }: TriggerSelectorProps) 
                     <SelectTrigger className="bg-gray-900 border-gray-800">
                       <SelectValue placeholder="Select method" />
                     </SelectTrigger>
-                    <SelectContent className="bg-gray-900 border-gray-800">
+                    <SelectContent className="bg-gray-900 border-gray-800 text-white">
                       <SelectItem value="get">GET</SelectItem>
                       <SelectItem value="post">POST</SelectItem>
                       <SelectItem value="put">PUT</SelectItem>
@@ -128,7 +128,7 @@ export default function TriggerSelector({ onTriggerAdd }: TriggerSelectorProps) 
                   <Input
                     id="cron-expression"
                     placeholder="0 * * * *"
-                    className="bg-gray-900 border-gray-800 font-mono"
+                    className="bg-gray-900 border-gray-800 text-white font-mono"
                   />
                   <p className="text-sm text-muted-foreground">
                     Use cron syntax to define the schedule (e.g., "0 * * * *" for hourly)
@@ -141,7 +141,7 @@ export default function TriggerSelector({ onTriggerAdd }: TriggerSelectorProps) 
                     <SelectTrigger className="bg-gray-900 border-gray-800">
                       <SelectValue placeholder="Select timezone" />
                     </SelectTrigger>
-                    <SelectContent className="bg-gray-900 border-gray-800">
+                    <SelectContent className="bg-gray-900 border-gray-800 text-white">
                       <SelectItem value="utc">UTC</SelectItem>
                       <SelectItem value="est">Eastern Time (EST/EDT)</SelectItem>
                       <SelectItem value="pst">Pacific Time (PST/PDT)</SelectItem>
@@ -156,7 +156,7 @@ export default function TriggerSelector({ onTriggerAdd }: TriggerSelectorProps) 
                   <Input
                     id="email-address"
                     placeholder="trigger@flowcraft.io"
-                    className="bg-gray-900 border-gray-800"
+                    className="bg-gray-900 border-gray-800 text-white"
                   />
                   <p className="text-sm text-muted-foreground">
                     Emails sent to this address will trigger your workflow
@@ -165,7 +165,11 @@ export default function TriggerSelector({ onTriggerAdd }: TriggerSelectorProps) 
 
                 <div className="space-y-2">
                   <Label htmlFor="subject-filter">Subject Filter (Optional)</Label>
-                  <Input id="subject-filter" placeholder="[Trigger]" className="bg-gray-900 border-gray-800" />
+                  <Input
+                    id="subject-filter"
+                    placeholder="[Trigger]"
+                    className="bg-gray-900 border-gray-800 text-white"
+                  />
                   <p className="text-sm text-muted-foreground">Only trigger on emails with this text in the subject</p>
                 </div>
 
@@ -193,7 +197,7 @@ export default function TriggerSelector({ onTriggerAdd }: TriggerSelectorProps) 
                     <SelectTrigger className="bg-gray-900 border-gray-800">
                       <SelectValue placeholder="Select event" />
                     </SelectTrigger>
-                    <SelectContent className="bg-gray-900 border-gray-800">
+                    <SelectContent className="bg-gray-900 border-gray-800 text-white">
                       <SelectItem value="message">New Message</SelectItem>
                       <SelectItem value="reaction">Reaction Added</SelectItem>
                       <SelectItem value="channel">Channel Created</SelectItem>
@@ -203,7 +207,11 @@ export default function TriggerSelector({ onTriggerAdd }: TriggerSelectorProps) 
 
                 <div className="space-y-2">
                   <Label htmlFor="slack-channel">Channel Filter (Optional)</Label>
-                  <Input id="slack-channel" placeholder="#triggers" className="bg-gray-900 border-gray-800" />
+                  <Input
+                    id="slack-channel"
+                    placeholder="#triggers"
+                    className="bg-gray-900 border-gray-800 text-white"
+                  />
                   <p className="text-sm text-muted-foreground">Only trigger on events from this channel</p>
                 </div>
               </TabsContent>

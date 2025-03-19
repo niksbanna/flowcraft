@@ -177,33 +177,30 @@ function LargeScaleWorkflowInner() {
         fitView
       >
         <Controls />
-        <MiniMap 
-          nodeStrokeColor="#555555"
-          nodeColor="#333333"
-          nodeBorderRadius={8}
-        />
+        <MiniMap nodeStrokeColor="#555555" nodeColor="#333333" nodeBorderRadius={8} />
         <Background gap={12} size={1} color="#333333" />
-        
-        <Panel position="top-left" className="bg-gray-950 border border-gray-800 rounded-lg p-3 m-3 flex gap-2 items-center">
+
+        <Panel
+          position="top-left"
+          className="bg-gray-950 border border-gray-800 rounded-lg p-3 m-3 flex gap-2 items-center"
+        >
           <div className="relative flex-1">
             <Search className="absolute left-2 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
-            <Input 
-              placeholder="Search nodes..." 
-              className="pl-8 bg-gray-900 border-gray-800"
+            <Input
+              placeholder="Search nodes..."
+              className="pl-8 bg-gray-900 border-gray-800 text-white"
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              onKeyDown={(e) => e.key === 'Enter' && handleSearch()}
+              onKeyDown={(e) => e.key === "Enter" && handleSearch()}
             />
           </div>
           <Button variant="outline" size="icon" onClick={handleSearch}>
             <Search className="h-4 w-4" />
           </Button>
         </Panel>
-        
+
         <Panel position="top-right" className="flex gap-2 m-3">
           <TriggerSelector onTriggerAdd={handleAddTrigger} />
-          <ApiIntegrationNodes onNodeAdd={handleAddApiNode} />
-          <Button variant="outline" size="sm"  />
           <ApiIntegrationNodes onNodeAdd={handleAddApiNode} />
           <Button variant="outline" size="sm" className="gap-2">
             <Plus className="h-4 w-4" />
@@ -214,7 +211,7 @@ function LargeScaleWorkflowInner() {
             Run
           </Button>
         </Panel>
-        
+
         <Panel position="bottom-left" className="bg-gray-950 border border-gray-800 rounded-lg p-3 m-3">
           <div className="space-y-4">
             <div className="flex items-center justify-between">
@@ -235,7 +232,7 @@ function LargeScaleWorkflowInner() {
             </div>
           </div>
         </Panel>
-        
+
         <Panel position="bottom-right" className="bg-gray-950 border border-gray-800 rounded-lg p-3 m-3">
           <div className="space-y-2">
             <h3 className="text-sm font-medium">Active Triggers</h3>

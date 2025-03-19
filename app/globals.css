@@ -60,6 +60,7 @@
 
 .react-flow__node {
   @apply rounded-lg border border-border bg-card shadow-sm;
+  color: white;
 }
 
 .react-flow__handle {
@@ -79,5 +80,48 @@
   from {
     stroke-dashoffset: 10;
   }
+}
+
+/* Edge flow animation */
+@keyframes flow {
+  from {
+    offset-distance: 0%;
+  }
+  to {
+    offset-distance: 100%;
+  }
+}
+
+.animate-edge-flow {
+  animation: flow 1.5s linear infinite;
+}
+
+/* Node animations */
+.node-highlight {
+  animation: node-pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes node-pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(124, 58, 237, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(124, 58, 237, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(124, 58, 237, 0);
+  }
+}
+
+/* Ensure text contrast in dark backgrounds */
+.bg-gray-900 input::placeholder,
+.bg-gray-950 input::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.bg-gray-900 button,
+.bg-gray-950 button,
+.bg-black button {
+  color: white;
 }
 

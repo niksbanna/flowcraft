@@ -4,7 +4,7 @@ import { Badge } from "@/components/ui/badge"
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip"
 import { AlertCircle, CheckCircle, Clock, HelpCircle } from "lucide-react"
 
-function ActionNode({ data, selected }: NodeProps) {
+function TransformationNode({ data, selected }: NodeProps) {
   // Determine node status styling
   const getStatusIndicator = () => {
     if (!data.status) return null
@@ -33,28 +33,15 @@ function ActionNode({ data, selected }: NodeProps) {
     }
   }
 
-  // Get category badge color
-  const getCategoryColor = () => {
-    switch (data.category) {
-      case "trigger":
-        return "bg-blue-900 text-blue-300 border-blue-700"
-      case "action":
-        return "bg-purple-900 text-purple-300 border-purple-700"
-      case "condition":
-        return "bg-yellow-900 text-yellow-300 border-yellow-700"
-      case "transformation":
-        return "bg-green-900 text-green-300 border-green-700"
-      case "output":
-        return "bg-red-900 text-red-300 border-red-700"
-      default:
-        return "bg-gray-900 text-gray-300 border-gray-700"
-    }
-  }
-
   return (
     <TooltipProvider>
       <div
         className={`px-4 py-3 min-w-[220px] relative transition-all duration-200 ${selected ? "ring-2 ring-primary" : ""}`}
+        style={{
+          clipPath: "polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%)",
+          paddingLeft: "25px",
+          paddingRight: "25px",
+        }}
       >
         {getStatusIndicator()}
 
@@ -63,14 +50,26 @@ function ActionNode({ data, selected }: NodeProps) {
         <div className="flex items-center gap-2 mb-2">
           <div className="text-xl">{data.icon}</div>
           <div className="font-medium flex-1">{data.label}</div>
-          {data.category && (
-            <Badge variant="outline" className={`text-xs ${getCategoryColor()}`}>
-              {data.category}
-            </Badge>
-          )}
+          <Badge variant="outline" className="bg-green-900 text-green-300 border-green-700 text-xs">
+            transform
+          </Badge>
         </div>
 
         {data.description && <div className="text-xs text-muted-foreground mt-1 mb-2">{data.description}</div>}
+
+        {/* Transformation details */}
+        {data.transformType && (
+          <div className="mt-2 pt-2 border-t border-gray-800 grid gap-1">
+            <div className="flex items-center gap-1 text-xs">
+              <span className="text-green-400 font-medium">Type:</span>
+              <span className="text-muted-foreground">{data.transformType}</span>
+            </div>
+
+            {data.transformConfig && (
+              <div className="text-xs font-mono bg-gray-800/50 p-1 rounded">{data.transformConfig}</div>
+            )}
+          </div>
+        )}
 
         {/* Input/Output Parameters */}
         {(data.inputs || data.outputs) && (
@@ -111,5 +110,5 @@ function ActionNode({ data, selected }: NodeProps) {
   )
 }
 
-export default memo(ActionNode)
+export default memo(TransformationNode)
 
