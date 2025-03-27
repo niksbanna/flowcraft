@@ -1,4 +1,3 @@
-import Navbar from "@/components/navbar"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Textarea } from "@/components/ui/textarea"
@@ -8,8 +7,6 @@ import Link from "next/link"
 export default function AIAssistantPage() {
   return (
     <main className="min-h-screen bg-black text-white">
-      <Navbar />
-
       <div className="container px-4 md:px-6 py-8">
         <div className="flex flex-col space-y-8">
           {/* Header */}

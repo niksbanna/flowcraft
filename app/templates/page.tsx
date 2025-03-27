@@ -1,6 +1,5 @@
 "use client"
 
-import Navbar from "@/components/navbar"
 import { Button } from "@/components/ui/button"
 import { ArrowLeft, ArrowRight } from "lucide-react"
 import Link from "next/link"
@@ -35,8 +34,6 @@ export default function TemplatesPage() {
 
   return (
     <main className="min-h-screen bg-black text-white">
-      <Navbar />
-
       <div className="container px-4 md:px-6 py-8">
         <div className="flex flex-col space-y-8">
           {/* Header */}

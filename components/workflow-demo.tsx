@@ -115,7 +115,7 @@ const nodeOptions = [
   },
 ]
 
-export default function WorkflowDemo() {
+export function WorkflowDemo() {
   const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes)
   const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges)
   const [selectedNode, setSelectedNode] = useState<Node | null>(null)

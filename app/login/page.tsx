@@ -12,9 +12,11 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card"
 import { Alert, AlertDescription } from "@/components/ui/alert"
 import { AlertCircle, Loader2 } from "lucide-react"
+import { useAuth } from "@/components/auth-provider"
 
 export default function LoginPage() {
   const router = useRouter()
+  const { login } = useAuth()
   const [activeTab, setActiveTab] = useState("login")
 
   // Login state
@@ -32,31 +34,18 @@ export default function LoginPage() {
   const [isSigningUp, setIsSigningUp] = useState(false)
 
   const handleLogin = async (e: React.FormEvent) => {
-    console.log("login1")
     e.preventDefault()
     setLoginError("")
     setIsLoggingIn(true)
 
     try {
-      // In a real app, this would be an API call to authenticate
-      // For demo purposes, we're just checking against hardcoded credentials
-      if (loginEmail === "admin" && loginPassword === "admin") {
-        // Simulate API delay
-        console.log("login2")
-        await new Promise((resolve) => setTimeout(resolve, 100))
+      // Use the login function from AuthContext instead of handling it here
+      await login(loginEmail, loginPassword)
 
-        // Store auth state in localStorage (in a real app, you'd use secure cookies or tokens)
-        localStorage.setItem("isAuthenticated", "true")
-        localStorage.setItem("user", JSON.stringify({ email: loginEmail, role: "admin" }))
-
-        // Redirect to main page
-        console.log("logi3")
-        router.push("/")
-      } else {
-        setLoginError("Invalid email or password. Try admin/admin")
-      }
+      // If login is successful, navigate to home page
+      router.push("/")
     } catch (error) {
-      setLoginError("An error occurred during login. Please try again.")
+      setLoginError("Invalid email or password. Try admin/admin")
     } finally {
       setIsLoggingIn(false)
     }
@@ -280,10 +269,9 @@ export default function LoginPage() {
                     fill="#FBBC05"
                   />
                   <path
-                    d="M12 5.38c1.62 0 3.56 6.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"
+                    d="M12 5.38c1.62 0 3.06 0.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"
                     fill="#EA4335"
                   />
-
                 </svg>
                 Google
               </Button>

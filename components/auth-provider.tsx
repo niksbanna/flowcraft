@@ -38,22 +38,26 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   // Check if user is authenticated on mount
   useEffect(() => {
     const checkAuth = () => {
-      const auth = localStorage.getItem("isAuthenticated")
-      const userData = localStorage.getItem("user")
+      try {
+        const auth = localStorage.getItem("isAuthenticated")
+        const userData = localStorage.getItem("user")
 
-      if (auth === "true" && userData) {
-        try {
-          const parsedUser = JSON.parse(userData)
-          setUser(parsedUser)
-          setIsAuthenticated(true)
-        } catch (error) {
-          // Invalid user data
-          localStorage.removeItem("isAuthenticated")
-          localStorage.removeItem("user")
+        if (auth === "true" && userData) {
+          try {
+            const parsedUser = JSON.parse(userData)
+            setUser(parsedUser)
+            setIsAuthenticated(true)
+          } catch (error) {
+            // Invalid user data
+            localStorage.removeItem("isAuthenticated")
+            localStorage.removeItem("user")
+          }
         }
+      } catch (error) {
+        console.error("Error checking authentication:", error)
+      } finally {
+        setIsLoading(false)
       }
-
-      setIsLoading(false)
     }
 
     checkAuth()
@@ -66,31 +70,51 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     }
   }, [isAuthenticated, isLoading, pathname, router])
 
-  const login = async (email: string, password: string) => {
-    // In a real app, this would call an API
-    if (email === "admin" && password === "admin") {
-      const user = { email, role: "admin" }
-      localStorage.setItem("isAuthenticated", "true")
-      localStorage.setItem("user", JSON.stringify(user))
-      setUser(user)
-      setIsAuthenticated(true)
-      return
-    }
+  const login = async (email: string, password: string): Promise<void> => {
+    return new Promise((resolve, reject) => {
+      // In a real app, this would call an API
+      if (email === "admin" && password === "admin") {
+        const userData = { email, role: "admin" }
 
-    throw new Error("Invalid credentials")
+        try {
+          // Set localStorage first
+          localStorage.setItem("isAuthenticated", "true")
+          localStorage.setItem("user", JSON.stringify(userData))
+
+          // Then update state
+          setUser(userData)
+          setIsAuthenticated(true)
+
+          // Resolve the promise after state is updated
+          resolve()
+        } catch (error) {
+          console.error("Error during login:", error)
+          reject(new Error("Login failed"))
+        }
+      } else {
+        reject(new Error("Invalid credentials"))
+      }
+    })
   }
 
   const logout = () => {
-    // Clear authentication data
-    localStorage.removeItem("isAuthenticated")
-    localStorage.removeItem("user")
+    try {
+      // Clear authentication data
+      localStorage.removeItem("isAuthenticated")
+      localStorage.removeItem("user")
 
-    // Clear user workflows when logging out
-    clearWorkflows()
+      // Clear user workflows when logging out
+      clearWorkflows()
 
-    setUser(null)
-    setIsAuthenticated(false)
-    router.push("/login")
+      // Update state
+      setUser(null)
+      setIsAuthenticated(false)
+
+      // Navigate to login page
+      router.push("/login")
+    } catch (error) {
+      console.error("Error during logout:", error)
+    }
   }
 
   return (

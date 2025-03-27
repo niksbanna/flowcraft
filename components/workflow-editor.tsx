@@ -563,10 +563,11 @@ export default function WorkflowEditor({ workflowId, isNew }: WorkflowEditorProp
                   snapToGrid
                   snapGrid={[15, 15]}
                   onInit={setReactFlowInstance}
+                  className="bg-background"
                 >
                   <Controls showInteractive={false} />
                   <MiniMap
-                    nodeStrokeColor="#555555"
+                    nodeStrokeColor="var(--border)"
                     nodeColor={(node) => {
                       switch (node.type) {
                         case "trigger":
@@ -583,7 +584,7 @@ export default function WorkflowEditor({ workflowId, isNew }: WorkflowEditorProp
                     }}
                     nodeBorderRadius={4}
                   />
-                  <Background gap={12} size={1} />
+                  <Background gap={12} size={1} color="var(--border)" />
                 </ReactFlow>
               </div>
             </CardContent>

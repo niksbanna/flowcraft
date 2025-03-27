@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button"
 import { ArrowRight, Plus, Zap, FileText, Workflow } from "lucide-react"
 import Link from "next/link"
 
-export default function EmptyWorkflowState() {
+export function EmptyWorkflowState() {
   return (
     <div className="flex flex-col items-center justify-center py-16 px-4 text-center">
       <div className="bg-gray-800/50 p-4 rounded-full mb-6">
@@ -61,10 +61,10 @@ export default function EmptyWorkflowState() {
           Check out our examples and tutorials to see what you can build with FlowCraft.
         </p>
         <div className="flex justify-center gap-4">
-          <Button variant="outline" className="border-blue-800">
+          <Button variant="outline" className="border-blue-800 hover:bg-blue-900/30">
             View examples
           </Button>
-          <Button variant="outline" className="border-blue-800">
+          <Button variant="outline" className="border-blue-800 hover:bg-blue-900/30">
             Watch tutorial
           </Button>
         </div>

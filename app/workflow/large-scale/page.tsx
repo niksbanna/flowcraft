@@ -1,5 +1,4 @@
 import LargeScaleWorkflow from "@/components/large-scale-workflow"
-import Navbar from "@/components/navbar"
 import { Button } from "@/components/ui/button"
 import { ArrowLeft, Info } from "lucide-react"
 import Link from "next/link"
@@ -7,7 +6,6 @@ import Link from "next/link"
 export default function LargeScaleWorkflowPage() {
   return (
     <main className="min-h-screen bg-black text-white">
-      <Navbar />
       <div className="container px-4 md:px-6 py-4">
         <div className="flex flex-col space-y-4">
           {/* Header */}

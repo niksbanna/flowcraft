@@ -23,7 +23,6 @@ import { Badge } from "@/components/ui/badge"
 import { Alert, AlertDescription } from "@/components/ui/alert"
 import {
   Play,
-  Home,
   Edit,
   Share,
   Clock,
@@ -34,6 +33,7 @@ import {
   Mail,
   MessageSquare,
   ArrowLeft,
+  Users,
 } from "lucide-react"
 import ActionNode from "./nodes/action-node"
 import CustomEdge from "./edges/custom-edge"
@@ -43,6 +43,8 @@ import ApiIntegrationNodes from "./api-integration-nodes"
 import { cn } from "@/lib/utils"
 import Link from "next/link"
 import { getWorkflowById, saveWorkflow } from "@/lib/workflow-storage"
+import WorkflowComments from "./workflow-comments"
+import WorkflowShareDialog from "./workflow-share-dialog"
 
 const nodeTypes: NodeTypes = {
   action: ActionNode,
@@ -105,6 +107,7 @@ export default function WorkflowDetail({ workflowId }: { workflowId: string }) {
   const [nodes, setNodes, onNodesChange] = useNodesState([])
   const [edges, setEdges, onEdgesChange] = useEdgesState([])
   const [triggers, setTriggers] = useState<any[]>([])
+  const [shareDialogOpen, setShareDialogOpen] = useState(false)
 
   // Load workflow data
   useEffect(() => {
@@ -343,7 +346,7 @@ export default function WorkflowDetail({ workflowId }: { workflowId: string }) {
                 Edit
               </Button>
             </Link>
-            <Button variant="outline" size="sm" className="gap-2">
+            <Button variant="outline" size="sm" className="gap-2" onClick={() => setShareDialogOpen(true)}>
               <Share className="h-4 w-4" />
               Share
             </Button>
@@ -532,6 +535,11 @@ export default function WorkflowDetail({ workflowId }: { workflowId: string }) {
           </div>
         </div>
 
+        {/* Comments section */}
+        <div className="mt-8">
+          <WorkflowComments workflowId={workflowId} />
+        </div>
+
         {/* Links to other features */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           <Link href={`/workflow/${workflowId}/runs`}>
@@ -552,17 +560,25 @@ export default function WorkflowDetail({ workflowId }: { workflowId: string }) {
               <p className="text-sm text-muted-foreground">Modify nodes, connections, and workflow settings</p>
             </div>
           </Link>
-          <Link href="/">
+          <Link href="/teams">
             <div className="border border-gray-800 rounded-lg p-4 hover:bg-gray-900/50 transition-colors">
               <h3 className="font-medium mb-2 flex items-center">
-                <Home className="h-5 w-5 mr-2 text-green-400" />
-                All Workflows
+                <Users className="h-5 w-5 mr-2 text-green-400" />
+                Team Workspaces
               </h3>
-              <p className="text-sm text-muted-foreground">Return to your workflow dashboard</p>
+              <p className="text-sm text-muted-foreground">Collaborate with your team on workflows</p>
             </div>
           </Link>
         </div>
       </div>
+
+      {/* Share workflow dialog */}
+      <WorkflowShareDialog
+        open={shareDialogOpen}
+        onOpenChange={setShareDialogOpen}
+        workflowId={workflowId}
+        workflowName={workflow.name}
+      />
     </div>
   )
 }
